@@ -15,7 +15,7 @@ public class TrafficApiClient {
     private static final RestTemplate restTemplate = new RestTemplate();
     private static final ObjectMapper mapper = new ObjectMapper();
 
-    private static final String API_KEY = "8450527346"; //실시간 전국 교통량(한국도로공사)
+    private static final String API_KEY = "(api인증키)"; //실시간 전국 교통량(한국도로공사)
     private static final String API_URL = "https://data.ex.co.kr/openapi/trafficapi/trafficAll";
 
     public static List<TrafficDto> fetchTrafficData() {
@@ -45,3 +45,4 @@ public class TrafficApiClient {
         return result;
     }
 }
+
