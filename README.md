@@ -1,1 +1,1 @@
-# spring
+# Spring MVC + Mybatis
