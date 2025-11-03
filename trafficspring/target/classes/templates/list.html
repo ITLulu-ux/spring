@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>게시판 목록</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px
+    rgba(0,0,0,0.1);
+        }
+
+        th, td {
+        text-align: center;
+        padding: 14px;
+        }
+
+       thread {
+        background-color: #007bff;
+        color: white;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-box {
+        margin-top: 20px;
+        text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+<h1 class="mb-4">게시판</h1>
+<table>
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>시간</th>
+        <th>톨게이트 구분</th>
+        <th>통행량</th>
+        <th>차량 구분</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="traffic : ${traffic}">
+        <td th:text="${traffic.id}"></td>
+        <td th:text="${traffic.tmName}"></td>
+        <td th:text="${traffic.tcsName}"></td>
+        <td th:text="${traffic.trafficAmout}"></td>
+        <td th:text="${traffic.carType}"></td>
+
+        <td>
+            <a th:href="@{'/traffic/view/' + ${traffic.id}}" class="btn btn-primary">보기</a>  <!--이동-->
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>목록</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: #f4f6f8;
+        margin: 0;
+        padding: 0;
+        }
+
+        .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #333;
+        }
+
+        .field {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15px;
+        padding: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        }
+
+        .field label {
+        font-weight: bold;
+        color: #555;
+        }
+
+        .field span {
+        color: #222;
+        }
+
+.button-group {
+    text-align: right;
+    margin-top: 30px;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-warning:hover {
+    background-color: #e0a800;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+    </style>
+</head>
+
+<body>
+<h1 class="mb-4">게시판</h1>
+<div class="container"></div>
+
+<div class="field">
+    <div>
+        <label>id:</label>
+        <span th:text="${traffic.id}"></span>
+    </div>
+
+    <div>
+        <label>시간: </label>
+        <span th:text="${traffic.tmName}"></span>
+    </div>
+
+    <div>
+        <label>구간:</label>
+        <span th:text="${traffic.tcsName}"></span>
+    </div>
+
+    <div>
+        <label>통행량: </label>
+        <span th:text="${traffic.trafficAmout}"></span>
+    </div>
+
+    <div>
+        <label>차종: </label>
+        <span th:text="${traffic.carType}"></span>
+    </div>
+</div>
+<a th:href="@{'/traffic/form?id=' + ${traffic.id}}" class="btn btn-warning">수정</a> <!--이동-->
+<form th:action="@{'/traffic/delete/' + ${traffic.id}}" method="post" style="display:inline;">
+    <button type="submit" class="btn btn-danger">삭제</button> <!--제출-->
+</form>
+</body>
+</html>

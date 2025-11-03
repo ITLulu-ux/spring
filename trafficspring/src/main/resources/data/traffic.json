@@ -1,0 +1,15 @@
+[
+  {
+    "sumTime": "10:00",
+    "conZoneName": "서울TG",
+    "trafficAmount": 100,
+    "carType": "승용차"
+  },
+  {
+    "sumTime": "10:10",
+    "conZoneName": "안산IC",
+    "trafficAmount": 200,
+    "carType": "화물차"
+  }
+]
+

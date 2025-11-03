@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <title>세부 목록</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Noto Sans KR', sans-serif;
+        }
+
+        .container {
+            margin-top: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px
+    rgba(0,0,0,0.1);
+        }
+
+        th, td {
+        text-align: center;
+        padding: 14px;
+        }
+
+       thread {
+        background-color: #007bff;
+        color: white;
+        }
+
+        table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .btn-box {
+        margin-top: 20px;
+        text-align: right;
+        }
+    </style>
+</head>
+<body>
+<h1 class="mb-4">수정</h1>
+<table>
+<thead>
+<tr>
+    <th>구간</th>
+    <th>시간</th>
+    <th>통행량</th>
+    <th>차종</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="traffic : ${traffic}">
+    <td th:text="${traffic.id}"></td>
+    <td th:text="${traffic.tmName}"></td>
+    <td th:text="${traffic.tcsName}"></td>
+    <td th:text="${traffic.trafficAmout}"></td>
+    <td th:text="${traffic.carType}"></td>
+</tr>
+</tbody>
+</table>
+<form th:action="@{/traffic/update}" method="post" th:object="${dto}">
+    <input type="hidden" th:field="*{id}" >
+
+    <label>시간:</label>
+    <input type="text" th:field="*{tmName}" >
+
+    <label>구간:</label>
+    <input type="text" th:field="*{tcsName}" >
+
+    <label> 통행량:</label>
+    <input type="text" th:field="*{trafficAmout}" >
+
+    <label>차종:</label>
+    <input type="text" th:field="*{carType}" >
+    <button type="submit" class="btn btn-danger">저장</button>
+</form>
+</body>
+</html>
